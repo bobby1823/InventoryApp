@@ -122,6 +122,14 @@ width: max-content;
     color: #ebebeb;
 }
  
+.form-home  {
+    
+    padding: 10px 4px 6px 3px;
+    border: 1px solid #0d2c52;
+    background: url (../images/login-btn.png) ;
+    
+    color: #ebebeb;
+}
  
 .login-box-options  {
     clear:both;
@@ -132,4 +140,34 @@ width: max-content;
 .login-box-options a {
     color: #ebebeb;
     font-size: 11px;
+}
+
+#menu
+{
+    background: #315FA5;
+    width:970px;
+    overflow: no-content;
+    height:available;
+    text-align: justify;
+    margin: 10px auto;
+	font: 15px Arial, Helvetica, sans-serif;
+	padding:10px;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+    line-height: normal;
+    text-align: center;
+    float : none;
+    position: relative;
+}
+
+#menu li {
+    display: inline-block;
+}
+
+#menu a{
+	color: white;
 }
