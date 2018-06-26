@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class DBManager {
 	private static final String DRIVER_URL = "com.mysql.jdbc.Driver";
-    private static final String CONN_URL = "jdbc:mysql://localhost/inventory";
-    private static final String USER = "root";
-    private static final String PASSSWORD = "mani";
+    private static final String CONN_URL = "jdbc:mysql://localhost/inventoryDB";
+    private static final String USER = "hbstudent";
+    private static final String PASSSWORD = "hbstudent";
 
     static {
         try {

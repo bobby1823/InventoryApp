@@ -7,7 +7,7 @@
 <title>Login Page</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body style="background-color: lightblue;">
 
 	<form action="Login" method='get'>
 		<div style="padding: 100px 0 0 250px;">

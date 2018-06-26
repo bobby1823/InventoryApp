@@ -8,16 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="userTable")
+@Table(name="usertable")
 public class LoginUserTable {
 
 	public LoginUserTable() {
 			
 	}
 	
-	public LoginUserTable(String userName, String password) {
+	public LoginUserTable(String userName, String password, String email) {
 		this.username = userName;
 		this.password = password;
+		this.email = email;
 	}
 	
 	
@@ -28,6 +29,10 @@ public class LoginUserTable {
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="email")
+	private String email;
+	
 
 	public String getUsername() {
 		return username;
@@ -45,8 +50,20 @@ public class LoginUserTable {
 		this.password = password;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
-		return "LoginUserTable [username=" + username + ", password=" + password + "]";
+		return "LoginUserTable [username=" + username + ", password=" + password + ", email=" + email + "]";
 	}
+	
+	
+
+	
 }

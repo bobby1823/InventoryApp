@@ -31,7 +31,7 @@
 		</tr>
 		<tr style="background-color: #fefef5;">
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name="product"></span></strong></td>
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span
 					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span

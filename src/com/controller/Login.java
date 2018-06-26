@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 		if(loginService.authentication(userNameForm, passWordForm)) {
 			session.setAttribute("username", request.getParameter("uname"));
 			System.out.println("UserName is: "+request.getParameter("uname") );
-			response.sendRedirect("welcome.jsp");
+			response.sendRedirect("deptHome.jsp");
 		}
 		else {
 			System.out.println("UserName is: "+request.getParameter("uname") );
