@@ -1,5 +1,6 @@
 package com.beans;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,7 +36,7 @@ public class ProductTable {
 		this.quantity = quantity;
 	}
 
-
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -61,10 +62,16 @@ public class ProductTable {
 	@Column(name="quantity")
 	private int quantity;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="storeId")
-	private List<StoreInfo> storeInfo;
-
+	private StoreInfo storeInfo ;
+	
+	//@ManyToOne(cascade=CascadeType.ALL)
+	//@JoinColumn(name="deptId")
+	@Column(name="deptId")
+	private int deptInfo;
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -149,7 +156,7 @@ public class ProductTable {
 
 
 
-	public List<StoreInfo> getStoreInfo() {
+	/*public Collection<StoreInfo> getStoreInfo() {
 		return storeInfo;
 	}
 
@@ -157,7 +164,56 @@ public class ProductTable {
 
 	public void setStoreInfo(List<StoreInfo> storeInfo) {
 		this.storeInfo = storeInfo;
+	}*/
+
+
+
+	public int getDeptInfo() {
+		return deptInfo;
 	}
+
+	/*public void setStoreInfo(int storeInfo) {
+		this.storeInfo = storeInfo;
+	}*/
+
+
+
+	public void setDeptInfo(int deptInfo) {
+		this.deptInfo = deptInfo;
+	}
+
+
+
+	public StoreInfo getStoreInfo() {
+		return storeInfo;
+	}
+
+
+
+	public void setStoreInfo(StoreInfo storeInfo) {
+		this.storeInfo = storeInfo;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ProductTable [productId=" + productId + ", productName=" + productName + ", vendor=" + vendor + ", mrp="
+				+ mrp + ", batchNum=" + batchNum + ", batchDate=" + batchDate + ", quantity=" + quantity
+				+ ", storeInfo=" + storeInfo + ", deptInfo=" + deptInfo + "]";
+	}
+
+	
+
+	/*public List<DeptInfoTable> getDeptInfo() {
+		return deptInfo;
+	}
+
+
+
+	public void setDeptInfo(List<DeptInfoTable> deptInfo) {
+		this.deptInfo = deptInfo;
+	}*/
 	
 	
 	

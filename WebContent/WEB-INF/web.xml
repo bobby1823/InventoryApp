@@ -11,15 +11,22 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-         <description></description>
-		 <display-name>Login</display-name>
-		 <servlet-name>Login</servlet-name>
-		 <servlet-class>com.controller.Login</servlet-class>
-    </servlet>
-    <servlet>
-         <description></description>
-		 <display-name>Logout</display-name>
-		 <servlet-name>Logout</servlet-name>
-		 <servlet-class>com.controller.Logout</servlet-class>
-    </servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.controller.Login</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>com.controller.Logout</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <description></description>
+    <display-name>AddProduct</display-name>
+    <servlet-name>AddProduct</servlet-name>
+    <servlet-class>com.controller.AddProduct</servlet-class>
+  </servlet>
 </web-app>

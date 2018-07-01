@@ -17,7 +17,7 @@
 </ul>
 </div>
 
-<form action="" method="post">
+<form action="AddProduct" method="post">
 	<br>
 	<br>
 	<table style="border: 1px solid #000000;" border="1" align="center">
@@ -31,52 +31,52 @@
 		</tr>
 		<tr style="background-color: #fefef5;">
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0" name="product"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name="productId"></span></strong></td>
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name = "storeId"></span></strong></td>
 			<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name = "deptId"></span></strong></td>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">Product Name</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="text" name = "productName"></span></strong></td>
 		<tr>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">Vendor</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="text" name = "vendor"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">MRP</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="text" name = "mrp"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">Batch Number</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name = "batchNumber"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">Batch Date</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="date"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="date" name = "batchDate"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
 			<td style="text-align: center;"><strong><span
 					style="color: #ffffff;">Quantity</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"></span></strong></td>
+					style="color: #000000;">&nbsp;<input type="number" min="0" name = "quantity"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
 			<td colspan="3"
