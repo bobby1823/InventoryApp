@@ -14,38 +14,40 @@ public class DeptInfoTable {
 	public DeptInfoTable() {
 		
 	}
+
+	public DeptInfoTable(int deptId, String deptName) {
+		this.deptId = deptId;
+		this.deptName = deptName;
+	}
 	
-	public DeptInfoTable(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="deptId")
-	private String username;
+	private int deptId;
 	
-	@Column(name="password")
-	private String password;
-	
+	@Column(name="deptName")
+	private String deptName;
+
+	public int getDeptId() {
+		return deptId;
+	}
+
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
 	@Override
 	public String toString() {
-		return "DeptInfoTable [username=" + username + ", password=" + password + "]";
+		return "DeptInfoTable [deptId=" + deptId + ", deptName=" + deptName + "]";
 	}
+
+	
 }

@@ -18,9 +18,9 @@ public class AddProductService {
 	}
 
 	
-	public static void addProduct(int productId, int storeId, int deptId, String productName, String vendor, 
+	public void addProduct(String userName, int productId, int storeId, int deptId, String productName, String vendor, 
 															double mrp, String batchNum, Date batchDate, int quantity) {
-		if(CheckUserType.checkUserType(storeId).equalsIgnoreCase("Store Manager")) {
+		if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
 			StoreInfo userInfo = new StoreInfo();
 
 			ProductTable product = new ProductTable();
