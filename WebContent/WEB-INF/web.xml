@@ -22,11 +22,16 @@
     <servlet-name>Logout</servlet-name>
     <servlet-class>com.controller.Logout</servlet-class>
   </servlet>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>AddProduct</display-name>
     <servlet-name>AddProduct</servlet-name>
     <servlet-class>com.controller.AddProduct</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>Modify</display-name>
+    <servlet-name>Modify</servlet-name>
+    <servlet-class>com.controller.Modify</servlet-class>
   </servlet>
 </web-app>

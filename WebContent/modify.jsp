@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-<form action="" method="post">
+<form action="Modify" method="post">
 	<br>
 	<br>
 	<%
@@ -39,7 +39,7 @@
 					style="color: #ffffff;">Product Name</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"
+					style="color: #000000;">&nbsp;<input type="text" name="productName"
 						value="<%=item.getProductName()%>"></span></strong></td>
 		<tr>
 		<tr style="background-color: #315FA5;">
@@ -47,7 +47,7 @@
 					style="color: #ffffff;">Vendor</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"
+					style="color: #000000;">&nbsp;<input type="text" name="vendor"
 						value="<%=item.getVendor()%>"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
@@ -55,7 +55,7 @@
 					style="color: #ffffff;">MRP</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"
+					style="color: #000000;">&nbsp;<input type="text" name="mrp"
 						value="<%=item.getMrp()%>"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
@@ -63,7 +63,7 @@
 					style="color: #ffffff;">Batch Number</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="text"
+					style="color: #000000;">&nbsp;<input type="text" name="batchNumber"
 						value="<%=item.getBatchNum()%>"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
@@ -71,7 +71,7 @@
 					style="color: #ffffff;">Batch Date</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="date"
+					style="color: #000000;">&nbsp;<input type="date" name="batchDate"
 						value="<%=item.getBatchDate()%>"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
@@ -79,7 +79,7 @@
 					style="color: #ffffff;">Quantity</span></strong></td>
 			<td colspan="2"
 				style="text-align: center; background-color: #EFEFEE;"><strong><span
-					style="color: #000000;">&nbsp;<input type="number" min="0"
+					style="color: #000000;">&nbsp;<input type="number" min="0" name="quantity"
 						value="<%=item.getQuantity()%>"></span></strong></td>
 		</tr>
 		<tr style="background-color: #315FA5;">
