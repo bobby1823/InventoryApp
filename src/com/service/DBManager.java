@@ -10,7 +10,7 @@ public class DBManager {
     private static final String CONN_URL = "jdbc:mysql://localhost/inventoryDB";
     private static final String USER = "hbstudent";
     private static final String PASSSWORD = "hbstudent";
-
+ 
     static {
         try {
             Class.forName(DRIVER_URL);

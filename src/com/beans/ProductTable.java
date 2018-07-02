@@ -63,7 +63,9 @@ public class ProductTable {
 	private int quantity;
 	
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade={
+			CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
+	)
 	@JoinColumn(name="storeId")
 	private StoreInfo storeInfo ;
 	
