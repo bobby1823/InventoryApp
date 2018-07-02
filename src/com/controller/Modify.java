@@ -34,12 +34,15 @@ public class Modify extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userName = session.getAttribute("userName").toString();
+		String userName = session.getAttribute("username").toString();
+		System.out.println("ProductID "+session.getAttribute("productId").toString());
+		System.out.println("Store ID is "+session.getAttribute("storeId").toString());
+		System.out.println("Dept ID is "+session.getAttribute("deptId").toString());
 		
 		//Fetch product data from UI
-		int productId = Integer.valueOf(request.getParameter("productId"));
-		int storeId = Integer.valueOf(request.getParameter("storeId"));
-		int deptId = Integer.valueOf(request.getParameter("deptId"));
+		int productId = Integer.valueOf(session.getAttribute("productId").toString());
+		int storeId = Integer.valueOf(session.getAttribute("storeId").toString());
+		int deptId = Integer.valueOf(session.getAttribute("deptId").toString());
 		String productName = (request.getParameter("productName"));
 		String vendor = request.getParameter("vendor");
 		double mrp = Double.parseDouble(request.getParameter("mrp"));
@@ -51,7 +54,7 @@ public class Modify extends HttpServlet {
 			String month = date[1];
 			String day = date[2];
 			batchDate = new SimpleDateFormat("dd/MM/yy").parse(day+"/"+month+"/"+year);
-			System.out.println("Date: "+batchNum);
+			System.out.println("Date: "+batchDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

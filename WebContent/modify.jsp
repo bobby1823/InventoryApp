@@ -17,6 +17,10 @@
 	<%
 		Item item = DBManager.getItem(Integer.parseInt(request.getParameter("storeId")),
 				Integer.parseInt(request.getParameter("productId")));
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("productId", request.getParameter("productId"));
+				httpSession.setAttribute("storeId", request.getParameter("storeId"));
+				httpSession.setAttribute("deptId", request.getParameter("storeId"));
 	%>
 	<table style="border: 1px solid #000000;" border="1" align="center">
 		<tr style="background-color: #315FA5;">

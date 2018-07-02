@@ -32,10 +32,10 @@
 			validateUserName();
 			validatePassword();
 			if(flag === 1) {
-				alert("false");
+				//alert("false");
 				return false;
 			} else {
-				alert("true");
+				//alert("true");
 				return true;
 			}
 		}
