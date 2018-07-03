@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.beans.DeptInfoTable;
+import com.beans.InventoryUpdateTable;
 import com.beans.LoginUserTable;
 import com.beans.ProductTable;
 import com.beans.StoreDept;
@@ -27,6 +28,7 @@ public class HibernateConfig {
             					.addAnnotatedClass(DeptInfoTable.class)
             					.addAnnotatedClass(StoreInfo.class)
             					.addAnnotatedClass(StoreDept.class)
+            					.addAnnotatedClass(InventoryUpdateTable.class)
             					.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);

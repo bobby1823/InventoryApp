@@ -1,6 +1,8 @@
 <%@page import="com.service.DeleteService"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="com.model.dao.CheckUserType"%>
+<%@page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,6 +23,20 @@
 			int deleteProductId = Integer.parseInt(String.valueOf(request.getParameter("productId")));
 			DeleteService deleteService = new DeleteService();
 			deleteService.deleteProduct(userName, deleteProductId);
+			response.sendRedirect("AfterDelete.jsp");
+			/* if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
+				
+			}
+			response.setContentType("text/html");
+		    PrintWriter op = response.getWriter();
+
+		    op.println("<html>");
+		    op.println("<head>");
+		    op.println("<title>Delete</title>");
+		    op.println("</head>");
+		    op.println("<body bgcolor=\"blue\">");
+		    op.println("</body>");
+		    op.println("</html>"); */
 		%>
 </body>
 </html>

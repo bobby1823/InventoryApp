@@ -62,6 +62,7 @@ public class Modify extends HttpServlet {
 		
 		ModifyProductService modify = new ModifyProductService();
 		modify.modifyProduct(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
+		response.sendRedirect("AfterModify.jsp");
 	}
 
 }
