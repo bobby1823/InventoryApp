@@ -27,7 +27,7 @@
 			String userName = session.getAttribute("username").toString();
 			if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
 				%>
-				<h1>Your Product have been successfully Removed!</h1>
+				<h1>Your Product have been successfully Updated!</h1>
 				<% 
 			}
 			else{

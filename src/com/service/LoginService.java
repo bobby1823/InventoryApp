@@ -1,11 +1,7 @@
 package com.service;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import com.beans.LoginUserTable;
-import com.hibernate.util.HibernateConfig;
+import com.model.dao.LoginDao;
+import com.model.dao.impl.LoginDaoImpl;
 
 public class LoginService {
 
@@ -13,9 +9,11 @@ public class LoginService {
 		
 	}
 	
+	LoginDao login = new LoginDaoImpl();
+	
 	public boolean authentication(String userName, String passWord) {
-		boolean status = !(userId(userName).equals(null)) && !(userPassword(passWord).equals(null)) 
-				&& !(userId(userName).equals("")) && !(userPassword(passWord).equals(""));
+		boolean status = !(login.userId(userName).equals(null)) && !(login.userPassword(passWord).equals(null)) 
+				&& !(login.userId(userName).equals("")) && !(login.userPassword(passWord).equals(""));
 		if(status) {
 			System.out.println("Value: "+status);
 			return true;
@@ -23,57 +21,4 @@ public class LoginService {
 		return false;
 	}
 	
-	public String userId(String userID) {
-		String data = "";
-		Session session = HibernateConfig.openSession();
-        Transaction tx = null;
-//        User user = null;
-        LoginUserTable loginUserDB = null;
-        try {
-            tx = session.getTransaction();
-            tx.begin();
-            //Query query = session.createQuery("from userTable where username='"+userID+"'");
-            //loginUserDB = (LoginUserTable)query.uniqueResult();
-            loginUserDB = session.get(LoginUserTable.class, userID);
-            data = loginUserDB.getUsername();
-            System.out.println("UserName from DB: "+data);
-            tx.commit();
-        } 
-        catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return data;
-	}
-	
-	public String userPassword(String userID) {
-		String data = "";
-		Session session = HibernateConfig.openSession();
-        Transaction tx = null;
-//        User user = null;
-        LoginUserTable loginUserDB = null;
-        try {
-            tx = session.getTransaction();
-            tx.begin();
-//            Query query = session.createQuery("from userTable where password='"+password+"'");
-//            loginUserDB = (LoginUserTable)query.uniqueResult();
-            loginUserDB = session.get(LoginUserTable.class, userID);
-            data = loginUserDB.getPassword();
-            System.out.println("UserName from DB: "+data);
-            tx.commit();
-        } 
-        catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return data;
-	}
 }

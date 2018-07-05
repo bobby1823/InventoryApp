@@ -1,66 +1,25 @@
 package com.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import com.beans.ProductTable;
-import com.beans.StoreInfo;
-import com.hibernate.util.HibernateConfig;
+import com.model.dao.AddProductDao;
 import com.model.dao.CheckUserType;
+import com.model.dao.impl.AddProductDaoImpl;
 
 public class AddProductService {
 
 	public AddProductService() {
 		
 	}
-
+	AddProductDao productDao = new  AddProductDaoImpl();
 	
 	public void addProduct(String userName, int productId, int storeId, int deptId, String productName, String vendor, 
 															double mrp, String batchNum, Date batchDate, int quantity) {
 		if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
-			StoreInfo userInfo = new StoreInfo();
-
-			ProductTable product = new ProductTable();
 			
-			
-			
-			Transaction tx = null;
-			Session session = HibernateConfig.openSession();
-			try {
-		            tx = session.getTransaction();
-		            tx.begin();
-		            //Getting the StoreId object
-		            userInfo = session.get(StoreInfo.class, storeId);
-		            //Setting all the data into ProductTable Bean. And place passing it to product object 
-		            product.setProductId(productId);
-		            product.setStoreInfo(userInfo);
-		            product.setDeptInfo(deptId);
-		            product.setProductName(productName);
-		            product.setVendor(vendor);
-		            product.setMrp(mrp);
-		            product.setBatchNum(batchNum);
-		            product.setBatchDate(batchDate);				
-					product.setQuantity(quantity);
-					
-		            session.save(product);
-		            tx.commit();
-		            System.out.println("Product Details from DB: "+product);
-		          
-		        } 
-		        catch (Exception e) {
-		            if (tx != null) {
-		                tx.rollback();
-		            }
-		            e.printStackTrace();
-		        } finally {
-		            session.close();
-		        }
+			productDao.addProduct(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
 		}
 		else {
-			//Logic for getting data from Inventory update table
+			productDao.addInventory(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
 		}
 			
 	}
