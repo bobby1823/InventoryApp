@@ -10,9 +10,9 @@ import com.beans.ProductTable;
 import com.beans.StoreInfo;
 import com.exception.InventoryAppException;
 import com.hibernate.util.HibernateConfig;
-import com.model.dao.DeleteProduct;
+import com.model.dao.DeleteProductDao;
 
-public class DeleteProductImpl implements DeleteProduct{
+public class DeleteProductDaoImpl implements DeleteProductDao{
 
 	@Override
 	public void deleteProduct(String userName, int productId) {
@@ -91,5 +91,39 @@ public class DeleteProductImpl implements DeleteProduct{
 			session.close();
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void deleteFromInventory(String userName, int productId) throws InventoryAppException {
+		InventoryUpdateTable updateTable = new InventoryUpdateTable();
+		Transaction tx = null;
+		Session session = HibernateConfig.openSession();
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+			//Getting the Product object
+			List<InventoryUpdateTable> updateTableList = session.createQuery("From InventoryUpdateTable where productId="+productId).list();
+			//Equating into updateTable
+			updateTable = updateTableList.get(0);
+			System.out.println("Inventory Details for deleting: "+updateTable);
+			//Deleting the Fetched object
+			session.delete(updateTable);
+			tx.commit();
+
+		} 
+		catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+	
+	/*public static void main(String args[]) throws InventoryAppException {
+		DeleteProductImpl asd = new DeleteProductImpl();
+		asd.deleteFromInventory("Sayanta", 4);
+	}*/
 
 }

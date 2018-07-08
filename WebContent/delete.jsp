@@ -21,6 +21,7 @@
 			HttpSession sessionObject = request.getSession();
 			String userName = sessionObject.getAttribute("username").toString();
 			int deleteProductId = Integer.parseInt(String.valueOf(request.getParameter("productId")));
+			//Delete Service is getting called.
 			DeleteService deleteService = new DeleteService();
 			deleteService.deleteProduct(userName, deleteProductId);
 			response.sendRedirect("AfterDelete.jsp");

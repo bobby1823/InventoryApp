@@ -1,6 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.service.DBManager"%>
 <%@page import="com.service.Item"%>
+<%@page import="com.model.dao.*"%>
+<%@page import="com.model.dao.impl.*"%>
+<%@page import="com.beans.InventoryUpdateTable" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,6 +12,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Check Your Approval Status</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script>
+			 
+	function approve(storeId, productId, deptId, operationType, productName, vendor, mrp, batchNum, batchDate, quantity, status) {
+		var txt;
+		txt = confirm("Do you really want to Approve")
+		if (txt.toString() == "true") {
+			window.location = "approve.jsp?storeId=" + storeId + "&productId="
+					+ productId + "&deptId=" +deptId+ "&operationType=" + operationType + "&productName=" +productName+ "&vendor="+vendor+ "&mrp="+mrp+
+					"&batchNum="+batchNum+ "&batchDate="+batchDate+ "&quantity="+quantity+ "&status="+status;
+		}
+	}
+
+	function deny(storeId, productId, deptId, operationType, productName, vendor, mrp, batchNum, batchDate, quantity, status) {
+		var txt;
+		txt = confirm("Do you really want to Deny the item request")
+		if (txt.toString() == "true") {
+			window.location = "approve.jsp?storeId=" + storeId + "&productId="
+					+ productId + "&deptId=" +deptId+ "&operationType=" + operationType + "&productName=" +productName+ "&vendor="+vendor+ "&mrp="+mrp+
+					"&batchNum="+batchNum+ "&batchDate="+batchDate+ "&quantity="+quantity+ "&status="+status;
+		}
+	}
+</script>
 </head>
 <body>
 	<div id="menu">
@@ -51,9 +77,10 @@
 			</tr>
 
 			<%
-				ArrayList<Item> items = DBManager.getAllItems();
+				ShowInventoryDao showInventory = new ShowInventoryDaoImpl();
+				ArrayList<InventoryUpdateTable> items = showInventory.showInventoryData();
 				int i = 1;
-				for (Item item : items) {
+				for (InventoryUpdateTable item : items) {
 			%>
 			<tr style="background-color: #fefef5;">
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
@@ -61,9 +88,9 @@
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
 						style="color: #000000;">&nbsp;<%=item.getProductId()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-						style="color: #000000;">&nbsp;<%=item.getStoreId()%></span></strong></td>
+						style="color: #000000;">&nbsp;<%=item.getStoreInfo().getStoreId()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-						style="color: #000000;">&nbsp;<%=item.getDeptId()%></span></strong></td>
+						style="color: #000000;">&nbsp;<%=item.getDeptInfo() %></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
 						style="color: #000000;">&nbsp;<%=item.getProductName()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
@@ -77,17 +104,17 @@
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
 						style="color: #000000;">&nbsp;<%=item.getQuantity()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-						style="color: #000000;">&nbsp;<%=item.getQuantity()%></span></strong></td>
+						style="color: #000000;">&nbsp;<%=item.getOperationType()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
-						style="color: #000000;">&nbsp;<%=item.getQuantity()%></span></strong></td>
+						style="color: #000000;">&nbsp;<%=item.getStatus()%></span></strong></td>
 				<%
 					if ("a".equals("a")) {
 				%>
 				<td style="text-align: center; background-color: #4CAF50;"><strong><span
-						style="color: #000000;">&nbsp;<a href=""><img
+						style="color: #000000;">&nbsp;<a href="javascript:approve(<%=item.getStoreInfo().getStoreId()%>,<%=item.getProductId()%>,<%=item.getDeptInfo()%>,<%=item.getOperationType()%>);"><img
 								src="./images/approveIcon.png" title="Approve"></a></span></strong></td>
 				<td style="text-align: center; background-color: #b90a2d;"><strong><span
-						style="color: #000000;">&nbsp;<a href=""><img
+						style="color: #000000;">&nbsp;<a href="javascript:deny(<%=item.getStoreInfo().getStoreId()%>,<%=item.getProductId()%>,<%=item.getDeptInfo()%>,<%=item.getOperationType()%>);"><img
 								src="./images/denyIcon.png" title="Deny"></a></span></strong></td>
 				<%
 					}

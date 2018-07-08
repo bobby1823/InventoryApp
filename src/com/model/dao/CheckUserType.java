@@ -39,6 +39,7 @@ public class CheckUserType {
 			return "Department Manager";
 		}
 	}
+	@SuppressWarnings("unchecked")
 	public static String checkUserType(String userName) {
 		Session session = HibernateConfig.openSession();
 		StoreDept userInfo = new StoreDept();
