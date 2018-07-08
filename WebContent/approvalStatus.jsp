@@ -72,8 +72,15 @@
 						style="color: #ffffff;">Request Type</span></strong></td>
 				<td style="text-align: center;"><strong><span
 						style="color: #ffffff;">Status</span></strong></td>
+				<%
+					String userName = session.getAttribute("username").toString();
+					if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
+				 %>
 				<td colspan="2" style="text-align: center;"><strong><span
 						style="color: #ffffff;">Approve/Deny</span></strong></td>
+				<%
+					}
+				 %>
 			</tr>
 
 			<%
@@ -107,8 +114,8 @@
 						style="color: #000000;">&nbsp;<%=item.getOperationType()%></span></strong></td>
 				<td style="text-align: center; background-color: #EFEFEE;"><strong><span
 						style="color: #000000;">&nbsp;<%=item.getStatus()%></span></strong></td>
-				<%
-					if ("a".equals("a")) {
+				<%					
+					if(CheckUserType.checkUserType(userName).equalsIgnoreCase("Store Manager")) {
 				%>
 				<td style="text-align: center; background-color: #4CAF50;"><strong><span
 						style="color: #000000;">&nbsp;<a href="javascript:approve(<%=item.getStoreInfo().getStoreId()%>,<%=item.getProductId()%>,<%=item.getDeptInfo()%>,<%=item.getOperationType()%>);"><img

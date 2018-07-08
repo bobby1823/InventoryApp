@@ -1,6 +1,7 @@
 package com.model.dao.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -57,6 +58,42 @@ public class AddProductDaoImpl implements AddProductDao{
 			double mrp, String batchNum, Date batchDate, int quantity) {
 		
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean addStatus(int productId, int storeId, int deptId) {
+		boolean status = true;	
+		Transaction tx = null;
+		Session session = HibernateConfig.openSession();
+		try {
+	            tx = session.getTransaction();
+	            tx.begin();
+	            List<StoreInfo> storeIdInfoList = session.createQuery("FROM StoreInfo where storeId="+storeId).list();
+	            List<StoreInfo> deptIdInfoList = session.createQuery("FROM DeptInfoTable where deptId="+deptId).list();
+	            List<ProductTable> productIdList = session.createQuery("FROM ProductTable where productId="+productId).list();
+	            System.out.println("StoreId Retrived: "+storeIdInfoList.toString());
+	            System.out.println("StoreId Retrived: "+deptIdInfoList.toString());
+	            System.out.println("StoreId Retrived: "+productIdList.toString());
+	           if((storeIdInfoList.isEmpty()) || !(productIdList.isEmpty()) || (deptIdInfoList.isEmpty())) {
+	            	status = false;
+	            }
+	            tx.commit();	           
+	          
+	        } 
+	        catch (Exception e) {
+	            if (tx != null) {
+	                tx.rollback();
+	            }
+	            e.printStackTrace();
+	        } finally {
+	            session.close();
+	        }
+		return status;
+	}
+	public static void main(String[] args) {
+		AddProductDaoImpl ad = new AddProductDaoImpl();
+		System.out.println(ad.addStatus(1, 12, 2));
 	}
 
 }

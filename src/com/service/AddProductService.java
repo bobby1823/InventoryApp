@@ -23,6 +23,14 @@ public class AddProductService {
 		}
 			
 	}
+	
+	/*
+	 * Returns the status whether product can be added or not based on the storeId, productId, deptId passed in UI
+	 */
+	public boolean checkStatusAddingProduct(int productId,int storeId, int deptId) {
+		return (productDao.addStatus(productId, storeId, deptId));
+	}
+	
 	/*public static void main(String args[]) throws ParseException {
 		//System.out.println("User is "+AddProductService.checkUserType(1));
 		Date date = new SimpleDateFormat("dd/MM/yyyy").parse("06/09/2019");

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,12 +56,22 @@ public class AddProduct extends HttpServlet {
 			e.printStackTrace();
 		}
 		int quantity = Integer.valueOf(request.getParameter("quantity"));
-		
-		//For adding the product into DB
 		AddProductService addProduct = new AddProductService();
-		addProduct.addProduct(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
-		response.sendRedirect("AfterProductAdded.jsp");
 		
+		System.out.println("Value "+addProduct.checkStatusAddingProduct(productId, storeId, deptId));
+		PrintWriter out = response.getWriter();
+		if(!(addProduct.checkStatusAddingProduct(productId, storeId, deptId))) {
+			System.out.println("Inside If Condition");
+			out.print("<script language='JavaScript'>alert('Please enter correct StoreId, ProductId and DeptId');</script>");
+			
+			response.sendRedirect("deptHome.jsp");
+		}
+		else {
+			System.out.println("Inside Else Condition");
+			//For adding the product into DB
+			addProduct.addProduct(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
+			response.sendRedirect("AfterProductAdded.jsp");
+		}
 		
 	}
 
