@@ -32,7 +32,7 @@ public class ModifyProductService {
 			modifyDao.modifyProduct(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
 		}
 		else {
-			
+			modifyDao.modifyInventory(userName, productId, storeId, deptId, productName, vendor, mrp, batchNum, batchDate, quantity);
 		}
 
 	}

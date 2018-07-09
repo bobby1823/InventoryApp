@@ -10,5 +10,5 @@ public interface AddProductDao {
 	public void addInventory(String userName, int productId, int storeId, int deptId, String productName, String vendor, 
 			double mrp, String batchNum, Date batchDate, int quantity);
 	
-	public boolean addStatus(int productId, int storeId, int deptId);
+	public boolean addStatus(String userName, int productId, int storeId, int deptId);
 }

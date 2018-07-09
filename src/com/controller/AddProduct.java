@@ -58,11 +58,11 @@ public class AddProduct extends HttpServlet {
 		int quantity = Integer.valueOf(request.getParameter("quantity"));
 		AddProductService addProduct = new AddProductService();
 		
-		System.out.println("Value "+addProduct.checkStatusAddingProduct(productId, storeId, deptId));
+		System.out.println("Value "+addProduct.checkStatusAddingProduct(userName, productId, storeId, deptId));
 		PrintWriter out = response.getWriter();
-		if(!(addProduct.checkStatusAddingProduct(productId, storeId, deptId))) {
+		if(!(addProduct.checkStatusAddingProduct(userName, productId, storeId, deptId))) {
 			System.out.println("Inside If Condition");
-			out.print("<script language='JavaScript'>alert('Please enter correct StoreId, ProductId and DeptId');</script>");
+			out.print("<script language='JavaScript'>alert('Please enter correct StoreId, ProductId and DeptId.');</script>");
 			
 			response.sendRedirect("deptHome.jsp");
 		}

@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.beans.InventoryUpdateTable;
 import com.beans.ProductTable;
 import com.beans.StoreInfo;
 import com.hibernate.util.HibernateConfig;
@@ -61,11 +62,53 @@ public class ModifyDaoImpl implements ModifyDao{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void modifyInventory(String userName, int productId, int storeId, int deptId, String productName,
 			String vendor, double mrp, String batchNum, Date batchDate, int quantity) {
 		
-		
+		StoreInfo userInfo = new StoreInfo();
+		InventoryUpdateTable updateTable = new InventoryUpdateTable();
+		Transaction tx = null;
+		Session session = HibernateConfig.openSession();
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+			//Getting the Product object
+			List<StoreInfo> q = session.createQuery("From StoreInfo where storeId="+storeId).list();
+			
+			for(StoreInfo userInfo1 : q) {
+				userInfo = userInfo1;
+				System.out.println("Respective StoreId is "+userInfo.getStoreId());
+			}
+			
+			System.out.println("Store Details for deleting: "+userInfo);
+			//Passing the data to InventoryUpdate Table
+			updateTable.setStatus("Pending");
+			updateTable.setOperationType("Modify");
+			updateTable.setBatchDate(batchDate);
+			updateTable.setBatchNum(batchNum);
+			updateTable.setDeptInfo(deptId);
+			updateTable.setMrp(mrp);
+			updateTable.setProductId(productId);
+			updateTable.setProductName(productName);
+			updateTable.setQuantity(quantity);
+			updateTable.setStoreInfo(userInfo);
+			updateTable.setVendor(vendor);
+			System.out.println("Data Sent for Approval: "+updateTable);
+			session.save(updateTable);
+			tx.commit();
+
+		} 
+		catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	
