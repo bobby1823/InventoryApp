@@ -31,10 +31,4 @@ public class AddProductService {
 		return (productDao.addStatus(userName, productId, storeId, deptId));
 	}
 	
-	/*public static void main(String args[]) throws ParseException {
-		//System.out.println("User is "+AddProductService.checkUserType(1));
-		Date date = new SimpleDateFormat("dd/MM/yyyy").parse("06/09/2019");
-		AddProductService.addProduct(5, 2, 1, "Mach 3 Turbo", "Gillette", 40, "5312", date, 100);
-		System.out.println("User Type: "+AddProductService.checkUserType(10));
-	}*/
 }
