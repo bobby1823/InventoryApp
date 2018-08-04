@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Check Your Approval Status</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css" />
 
 <script>
 			 

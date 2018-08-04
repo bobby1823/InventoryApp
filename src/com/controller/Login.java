@@ -16,7 +16,7 @@ import com.service.LoginService;
 @WebServlet(description = "Used for Logging in", urlPatterns = { "/Login" })
 public class Login extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
 		String userNameForm = request.getParameter("uname");
