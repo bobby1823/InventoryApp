@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.beans.InventoryUpdateTable;
+import com.beans.ProductTable;
 import com.beans.StoreInfo;
 import com.hibernate.util.HibernateConfig;
 import com.model.dao.ShowInventoryDao;
@@ -19,6 +20,15 @@ public class ShowInventoryDaoImpl implements ShowInventoryDao{
 		
 	}
 
+	@Override
+	//@Transactional
+	public List<ProductTable> showProductData() {
+		Session session = HibernateConfig.openSession();
+		//Session session = sessionFactory.getCurrentSession();
+		List<ProductTable> products =  session.createQuery("from ProductTable").list();
+		return products;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<InventoryUpdateTable> showInventoryData() {
@@ -47,9 +57,10 @@ public class ShowInventoryDaoImpl implements ShowInventoryDao{
 		return (ArrayList<InventoryUpdateTable>) inventoryData;
 	}
 
-	/*public static void main(String args[]) {
+	public static void main(String args[]) {
+		//ApplicationContext ctx = new FileSystemXmlApplicationContext("/WebContent/WEB-INF/spring-mvc-servlet.xml");
 		ShowInventoryDao dao = new ShowInventoryDaoImpl();
-		ArrayList<InventoryUpdateTable> arr = dao.showInventoryData();
+		System.out.println("Size of Product Table is "+dao.showProductData().size());
 
-	}*/
+	}
 }
